@@ -1,0 +1,46 @@
+{
+    "name": "razonyang/yii2-rate-limiter",
+    "description": "Yii2 Rate Limiter",
+    "type": "yii2-extension",
+    "keywords": ["yii2", "rate limiter"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Razon Yang",
+            "email": "razonyang@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.1",
+        "razonyang/token-bucket": "^1.0",
+        "razonyang/yii2-psr-log": "^1.0",
+        "yiisoft/yii2": "~2.0.13"
+    },
+    "require-dev": {
+        "codeception/codeception": "^3.0",
+        "codeception/verify": "^1.1",
+        "phpunit/phpunit": "^7",
+        "yiisoft/yii2-redis": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "RazonYang\\Yii2\\RateLimiter\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RazonYang\\Yii2\\RateLimiter\\Tests\\": "tests"
+        }
+    },
+    "suggest": {
+        "yiisoft/yii2-redis": "Yii2 Redis extension for RedisManager"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}

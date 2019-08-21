@@ -1,0 +1,9 @@
+# composer
+composer.lock
+composer.phar
+vendor/
+
+# phpunit
+.phpunit.result.cache
+
+tests/runtime

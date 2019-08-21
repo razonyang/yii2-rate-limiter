@@ -1,0 +1,33 @@
+language: php
+
+php:
+  - 7.1
+  - 7.2
+  - 7.3
+
+# faster builds on new travis setup not using sudo
+sudo: false
+
+services:
+  - redis
+  - memcached
+
+# cache vendor dirs
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+install:
+  - travis_retry composer self-update && composer --version
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - travis_retry composer install --prefer-dist --no-interaction
+
+before_script:
+  - echo -e "extension = memcached.so\nextension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
+script:
+  - vendor/bin/codecept run --coverage --coverage-xml
+
+after_script:
+    - wget -c https://scrutinizer-ci.com/ocular.phar
+    - php ocular.phar code-coverage:upload --format=php-clover tests/_output/coverage.xml
